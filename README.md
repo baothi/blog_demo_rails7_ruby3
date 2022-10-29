@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 https://github.com/Deanout/shopping-cart-rails-7
+rails g migration add_user_to_posts user:belongs_to
