@@ -22,8 +22,17 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+rails action_text install
 rails g migration add_user_to_posts user:belongs_to
 
 https://github.com/excid3/noticed
 bundle add ransack
+rails g migration add_role_to_user role:integer
+
+rails g controller admin index posts comments users show_post
+
+bundle add friendly_id
+rails g migration AddSlugToPosts slug:uniq
+rails g friendly_id
+rails db:migrate
+
