@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   # after_destroy {notify admin of bad behavior}
   has_many :comments, dependent: :destroy
 
+  has_noticed_notifications model_name: 'Notification'
+  has_many :notifications, through: :user,dependent: :destroy
+
 
   # after_create :oncreate
   # def oncreate

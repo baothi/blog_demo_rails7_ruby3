@@ -22,5 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-https://github.com/Deanout/shopping-cart-rails-7
+
 rails g migration add_user_to_posts user:belongs_to
+
+https://github.com/excid3/noticed
+bundle add ransack

@@ -10,5 +10,11 @@ User.create(email: "test@example.com",name: "test", password: "password", passwo
 User.create(email: "John@example.com",name: "john", password: "password", password_confirmation: "password")
 
 10.times do |x|
-  Post.create(title: "Title #{x}", body: "Body #{x} Words go here IDK", user_id: User.first.id)
+  Post.create(title: "Title #{User.first.name} #{x}", body: "Body #{x} Words go here IDK", user_id: User.first.id)
+end
+
+user = User.find_by_id(2)
+
+10.times do |x|
+  Post.create(title: "Title #{user.name} #{x}", body: "Body #{x} Words go here IDK", user_id: User.first.id)
 end
