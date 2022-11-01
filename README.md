@@ -7,21 +7,22 @@ Things you may want to cover:
 
 * Ruby version 3.0 and rails version 7.0
 
-* System dependencies
+db:migrate runs (single) migrations that have not run yet.
 
-* Configuration
+db:create creates the database
 
-* Database creation
+db:drop deletes the database
 
-* Database initialization
+db:schema:load creates tables and columns within the existing database following schema.rb. This will delete existing data.
 
-* How to run the test suite
+db:setup does db:create, db:schema:load, db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+db:reset does db:drop, db:setup
 
-* Deployment instructions
+db:migrate:reset does db:drop, db:create, db:migrate
 
-* ...
+
+
 rails action_text install
 rails g migration add_user_to_posts user:belongs_to
 
@@ -36,3 +37,23 @@ rails g migration AddSlugToPosts slug:uniq
 rails g friendly_id
 rails db:migrate
 
+bundle add bullet
+rails g bullet:install
+rails g migration AddCommentCounterCacheToPosts comments_count:integer
+rails g migration PopulatePostCommentsCount --force
+
+class PopulatePostCommentsCount < ActiveRecord::Migration[7.0]
+  def change
+    Post.all.each do |post|
+      <!-- post.update_column(:comment_count, post.comments.count) -->
+      Post.reset_counters(post.id, :comments)
+    end
+  end
+end
+
+bundle add activerecord-import
+
+
+EDITOR="code --wait" rails credentials:edit
+rails g migration ChangeJsonColumnInNotifications
+{"comment":{"_aj_globalid":"gid://blog-demo/Comment/51"},"post":{"_aj_globalid":"gid://blog-demo/Post/10"},"_aj_symbol_keys":["comment","post"]}

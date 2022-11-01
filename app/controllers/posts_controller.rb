@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.includes(:user, :rich_text_body).order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     # @posts.views = views
     # @posts.saved
     @post.update(views: @post.views + 1)
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
 
     mark_notifications_as_read
   end

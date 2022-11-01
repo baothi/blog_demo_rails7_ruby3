@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :post
+  belongs_to :post, counter_cache: true
   belongs_to :user
   has_rich_text :body
 
@@ -8,6 +8,7 @@ class Comment < ApplicationRecord
   has_noticed_notifications model_name: 'Notification'
   private
   def notify_recipient
+    return if post.user == user
     CommentNotification.with(comment: self, post: post).deliver_later(post.user)
   end
   def cleanup_notifications
