@@ -57,3 +57,9 @@ bundle add activerecord-import
 EDITOR="code --wait" rails credentials:edit
 rails g migration ChangeJsonColumnInNotifications
 {"comment":{"_aj_globalid":"gid://blog-demo/Comment/51"},"post":{"_aj_globalid":"gid://blog-demo/Post/10"},"_aj_symbol_keys":["comment","post"]}
+
+bundle add wicked
+rails g migration AddNamesToUser first_name last_name
+rails g model address street city state zip:integer country user:references
+rails g migration AddAddressToUser address:references
+rails g migration RemoveNameFromUser name
