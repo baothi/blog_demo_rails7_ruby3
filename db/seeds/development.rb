@@ -32,6 +32,11 @@ Address.create(street: '123 Main St',
                  country: 'USA',
                  user: john)
 
+Category.create(name: 'Uncategorized', display_in_nav: true)
+Category.create(name: 'Cars', display_in_nav: false)
+Category.create(name: 'Bikes', display_in_nav: true)
+Category.create(name: 'Boats', display_in_nav: true)
+
 elapsed = Benchmark.measure do
   # posts = []
   # 10.times do |x|
@@ -50,7 +55,10 @@ elapsed = Benchmark.measure do
   # Post.import(posts, recursive: true)
 
   10.times do |x|
-    post = Post.create(title: "Title #{User.first.full_name} #{x}", body: "Body #{x} Words go here IDK", user_id: User.first.id)
+    post = Post.create(title: "Title #{User.first.full_name} #{x}", 
+                       body: "Body #{x} Words go here IDK", 
+                       user_id: User.first.id,
+                      category: Category.first)
     5.times do |y|
       Comment.create(body: "Comment #{y}", user_id: User.second.id, post_id: post.id)
     end

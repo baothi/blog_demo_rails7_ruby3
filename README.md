@@ -63,3 +63,7 @@ rails g migration AddNamesToUser first_name last_name
 rails g model address street city state zip:integer country user:references
 rails g migration AddAddressToUser address:references
 rails g migration RemoveNameFromUser name
+
+
+rails g scaffold category name display_in_nav:boolean
+rails g migration AddCategoryToPosts category:belongs_to

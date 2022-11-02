@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   
   belongs_to :user
+  belongs_to :category
   # after_destroy {notify admin of bad behavior}2010
   has_many :comments, dependent: :destroy
   has_rich_text :body
