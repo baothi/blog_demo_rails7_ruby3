@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'members/dashboard'
   resources :categories
   authenticated :user, ->(user) { user.admin? } do
     get 'admin', to: 'admin#index'
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
     get 'admin/show_post/:id', to: 'admin#show_post', as: 'admin_post'
   end
   get 'search/', to: "search#index"
+
+  get 'checkout', to: 'checkouts#show'
+  get 'checkout/success', to: 'checkouts#success'
+  get 'billing', to: 'billing#show'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',

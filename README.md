@@ -54,7 +54,7 @@ end
 bundle add activerecord-import
 
 
-EDITOR="code --wait" rails credentials:edit
+EDITOR="code --wait" rails credentials:edit --environment=development
 rails g migration ChangeJsonColumnInNotifications
 {"comment":{"_aj_globalid":"gid://blog-demo/Comment/51"},"post":{"_aj_globalid":"gid://blog-demo/Post/10"},"_aj_symbol_keys":["comment","post"]}
 
@@ -67,3 +67,21 @@ rails g migration RemoveNameFromUser name
 
 rails g scaffold category name display_in_nav:boolean
 rails g migration AddCategoryToPosts category:belongs_to
+
+
+# login stripe
+
+stripe login -i
+stripe listen --forward-to localhost:3000/pay/webhooks/stripe
+sk_test_51IuXqOBmTxR6KoZuGFYUsktxAUQu0Wa79GOvU73Y0tEcKE9zWSb7IipyjVxTnlhMbyrR3GuhwNweTZyef7VnXFOs00yJ0E7cP0
+
+https://stackoverflow.com/questions/27452731/stripe-no-api-key-provided
+EDITOR="code --wait" rails credentials:edit --environment=development
+
+bin/rails pay:install:migrations
+rails g controller checkouts
+rails g migration AddBillingLocationToUser city country
+rails g migration AddCustomerInfoToUser subscription_status subscription_end_date:datetime subscription_start_date:datetime
+
+
+
