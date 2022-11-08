@@ -105,3 +105,26 @@ bundle exec wheneverize .
 crontab -r
 whenever --update-crontab
 
+
+rails g migration tempmigration 
+ rails db:seed:replant
+rails db:prepare   ==> nếu như có 1 migrate nào chưa chạy nó tự động chạy lại giúp mình
+rails initializers | grep pay
+rails initializers | grep devise
+rails stats
+
+
+https://picmojs.com/docs/getting-started/overview/
+bin/importmap pin picmo
+bin/importmap pin @picmo/popup-picker
+rails g stimulus emoji-picker
+
+
+
+
+
+
+
+
+
+
