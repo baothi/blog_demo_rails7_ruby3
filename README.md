@@ -96,5 +96,12 @@ bundle add chartkick
 
 rails g stimulus drag
 
-
+# cron jobs
+sudo apt install cron
+sudo service cron start
+sudo service cron status
+bundle add whenever
+bundle exec wheneverize .
+crontab -r
+whenever --update-crontab
 
