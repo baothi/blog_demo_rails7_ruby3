@@ -9,6 +9,11 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_rich_text :body
   has_one :content, class_name: 'ActionText::RichText', as: :record, dependent: :destroy
+  
+  # Single image upload
+  # has_one_attached :image
+  # Multiple images upload
+  has_many_attached :images
 
   has_noticed_notifications model_name: 'Notification'
   has_many :notifications, through: :user

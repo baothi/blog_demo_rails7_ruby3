@@ -119,9 +119,11 @@ bin/importmap pin picmo
 bin/importmap pin @picmo/popup-picker
 rails g stimulus emoji-picker
 
-
-
-
+rails g stimulus dropzone
+rails active_storage:install
+https://gist.github.com/lazaronixon/dca1b48c241422d6347f4b0c93bec739
+bin/importmap pin dropzone
+bin/importmap pin @rails/activestorage
 
 
 
