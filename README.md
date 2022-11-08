@@ -88,3 +88,13 @@ rails g migration AddCustomerInfoToUser subscription_status subscription_end_dat
 # create project
 rails g scaffold project title link
 
+# chart
+bundle add ahoy_matey
+https://github.com/ankane/ahoy
+bundle add groupdate
+bundle add chartkick
+
+rails g stimulus drag
+
+
+

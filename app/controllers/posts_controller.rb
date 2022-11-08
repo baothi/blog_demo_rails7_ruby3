@@ -14,7 +14,8 @@ class PostsController < ApplicationController
     # @posts.saved
     @post.update(views: @post.views + 1)
     @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
-
+    
+    ahoy.track 'Viewd Post', post_id: @post.id
     mark_notifications_as_read
   end
 

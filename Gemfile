@@ -88,3 +88,11 @@ gem "wicked", "~> 2.0"
 gem "stripe", "~> 7.1"
 gem "pay", "~> 5.0"
 gem "ruby-vips"
+
+gem "ahoy_matey", "~> 4.1"
+
+gem "groupdate", "~> 6.1"
+
+gem "chartkick", "~> 4.2"
+
+gem "acts_as_list", "~> 1.0"
