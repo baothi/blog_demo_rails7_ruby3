@@ -6,6 +6,8 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version 3.0 and rails version 7.0
+on rails 7 show images with rich_text_area
+https://github.com/libvips/ruby-vips
 
 db:migrate runs (single) migrations that have not run yet.
 
@@ -83,5 +85,6 @@ rails g controller checkouts
 rails g migration AddBillingLocationToUser city country
 rails g migration AddCustomerInfoToUser subscription_status subscription_end_date:datetime subscription_start_date:datetime
 
-
+# create project
+rails g scaffold project title link
 
